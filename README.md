@@ -7,7 +7,7 @@ In this example, csvtest1.csv is located in /tmp and mounted to /app/csv in the 
 
 $ docker run -v /tmp:/app/csv --privileged ghcr.io/backchristoffer/ocpbugpull:latest -f /app/csv/csvtest1.csv
 
-## How to use with binary ocpbugpull
+## How to use with binary ocpbugpull - Linux only for now
 If you get permission denied: chmod 755 ocpbugpull
 
 $ ./ocpbugpull -f csvtest1.csv
