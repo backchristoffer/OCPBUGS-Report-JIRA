@@ -1,7 +1,5 @@
 import csv, re, argparse
 
-csvf = "csvtest1.csv"
-
 def reg(m):
     return m.group(1)
 
