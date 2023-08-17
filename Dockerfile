@@ -1,6 +1,6 @@
-FROM centos/python-38-centos7
+FROM python:slim-bullseye
 WORKDIR /app
 COPY . .
 RUN pip3 install pipenv
 RUN pipenv install
-ENTRYPOINT [ "python3","ocpbugpull.py" ]
+ENTRYPOINT [ "pipenv","run","python3","ocpbugpull.py" ]
