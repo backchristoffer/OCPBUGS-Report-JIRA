@@ -3,3 +3,6 @@ build
 dist
 ocpbugpull.spec
 .csv
+Pipfile.lock
+.spec
+.lock
