@@ -5,7 +5,7 @@ def reg(m):
     return m.group(1)
 
 def readcsv(csvfile):
-    df = pd.read_csv(csvfile, sep=';', usecols=['Resource URL'], na_values=' NaN')
+    df = pd.read_csv(csvfile, sep=None,engine='python', usecols=['Resource URL'], na_values=' NaN')
     result = df.mask(df.eq('None')).dropna()
     return result
 
