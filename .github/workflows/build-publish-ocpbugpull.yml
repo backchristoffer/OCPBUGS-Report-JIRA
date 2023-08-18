@@ -1,0 +1,29 @@
+name: build and push ocpbugpull
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v2
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.SECRET }}
+        
+    - uses: actions/checkout@v3
+    - name: Build the Docker image and push to github
+      run: docker build . --file src/iplink_src/Dockerfile --tag ocpbugpull:latest
+    - name: Tag image
+      run: docker image tag ocpbugpull:latest ghcr.io/backchristoffer/ocpbugpull:latest
+    - name: Push image to github
+      run: docker image push ghcr.io/backchristoffer/ocpbugpull:latest
