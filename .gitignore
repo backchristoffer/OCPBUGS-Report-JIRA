@@ -1,8 +1,2 @@
-__pycache__
-build
-dist
-ocpbugpull.spec
-.csv
-Pipfile.lock
-.spec
-.lock
+*.csv
+ocpbr
