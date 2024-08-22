@@ -1,4 +1,4 @@
-## ocpbugpull
+## ocpbug-reports
 Helps me pull OCPBUGS jira issues from my csv reports. It will also output a jira search query together with the OCPBUGS so I can easily extract a report from JIRA. 
 
 ### How to use with docker - EXAMPLE
