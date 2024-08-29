@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/csv"
+	"flag"
 	"fmt"
 	"log"
 	"os"
@@ -50,19 +51,24 @@ func extractUniqueValues(records [][]string, columnIndex int) []string {
 	return result
 }
 
-func formatOutput(urls []string) string {
+func formatOutput(urls []string, project string) string {
 	if len(urls) == 0 {
 		return "No valid URLs found."
 	}
-	return fmt.Sprintf("project = OCPBUGS AND issuekey in (%s)", strings.Join(urls, ", "))
+	return fmt.Sprintf("project = %s AND issuekey in (%s)", project, strings.Join(urls, ", "))
 }
 
 func main() {
-	if len(os.Args) < 2 {
-		log.Fatalf("Usage: %s <path to csv file>", os.Args[0])
+
+	project := flag.String("project", "OCPBUGS", "The project name (OCPBUGS, RHEL, RHELPLAN)")
+	flag.Parse()
+
+	args := flag.Args()
+	if len(args) < 1 {
+		log.Fatalf("Usage: %s [flags] <path to csv file>", os.Args[0])
 	}
 
-	filePath := os.Args[1]
+	filePath := args[0]
 
 	records, err := readCSV(filePath)
 	if err != nil {
@@ -80,5 +86,5 @@ func main() {
 
 	urls := extractUniqueValues(records, urlIndex)
 
-	fmt.Println(formatOutput(urls))
+	fmt.Println(formatOutput(urls, *project))
 }

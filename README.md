@@ -1,6 +1,9 @@
-### How to
-I use this script whenever I need to extract all the OCPBUGS-* from a column and put them in a JIRA query.
-
+### Description
+Will take column "Resource URL" from a .csv and format that into a JIRA query like this. 
 ~~~
-./ocpbr data.csv
+project = OCPBUGS AND issuekey in (OCPBUGS-1234, OCPBUGS-1234, OCPBUGS-1234, OCPBUGS-1234, OCPBUGS-1234, OCPBUGS-1234, OCPBUGSM-1234)
+~~~
+### How to use
+~~~
+./ocpbr -project=RHEL,OCPBUGS,RHEPLAN data.csv
 ~~~
