@@ -65,7 +65,7 @@ func main() {
 
 	args := flag.Args()
 	if len(args) < 1 {
-		log.Fatalf("Usage: %s [flags] <path to csv file>", os.Args[0])
+		log.Fatalf("Usage: %s -project=RHEL <path to csv file>", os.Args[0])
 	}
 
 	filePath := args[0]
